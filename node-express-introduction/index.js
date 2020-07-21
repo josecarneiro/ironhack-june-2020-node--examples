@@ -16,16 +16,17 @@ app.use(express.static('public'));
 
 // Set route handlers for common endpoints
 app.get('/jose', (request, response) => {
-  // response.send('Olá mundo');
   response.sendFile(__dirname + '/views/jose.html');
 });
 
 app.get('/santi', (request, response) => {
-  response.send('Hola mundo');
+  // response.send('Hola mundo');
+  response.sendFile(__dirname + '/views/santi.html');
 });
 
 app.get('/aline', (request, response) => {
-  response.send('Oi mundo');
+  // response.send('Oi mundo');
+  response.sendFile(__dirname + '/views/aline.html');
 });
 
 app.get('*', (request, response) => {

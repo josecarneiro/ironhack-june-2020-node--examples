@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>My name is {{ name }}</h1>
+    <h4>I am {{ age }} years old</h4>
+    <p>I live in {{ location.city }}, {{ location.country }}</p>
+    <span>My pets are:</span>
+    <ul>
+      {{#each pets}}
+        <li>
+          <strong>{{ name }}</strong>
+
+          {{#if isWellBehaved}}
+            <span>Is a well behaved {{ species }}!</span>
+          {{else}}
+            <span>Is a poorly behaved {{ species }} :(</span>
+          {{/if}}
+          
+        </li>
+      {{/each}}
+    </ul>
+  </body>
+</html>
