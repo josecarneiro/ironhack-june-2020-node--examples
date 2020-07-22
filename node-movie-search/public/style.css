@@ -1,0 +1,49 @@
+body {
+  font-family: sans-serif;
+  max-width: 50em;
+  margin: 0 auto;
+  line-height: 2;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+input,
+button {
+  color: inherit;
+  background: transparent;
+  border: 1px solid lightgray;
+  line-height: inherit;
+  padding: 0.75em 1em;
+}
+
+input {
+  min-width: 20em;
+}
+
+form button {
+  margin-left: 1em;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+li a {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+img {
+  width: 6em;
+  display: block;
+}

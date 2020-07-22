@@ -1,0 +1,76 @@
+{
+  "Search": [
+    {
+      "Title": "Shark Tale",
+      "Year": "2004",
+      "imdbID": "tt0307453",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTMxMjY0NzE2M15BMl5BanBnXkFtZTcwNTc3ODcyMw@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Shark Night 3D",
+      "Year": "2011",
+      "imdbID": "tt1633356",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYjIwMDBlODEtZGRkMy00YTFiLWE5NDgtZGExODI2ZmIwZTQzXkEyXkFqcGdeQXVyMjQwMjk0NjI@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Eagle vs Shark",
+      "Year": "2007",
+      "imdbID": "tt0494222",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOTUxMzY3MzI0NV5BMl5BanBnXkFtZTcwMDUwMDU0MQ@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Shark",
+      "Year": "2006–2008",
+      "imdbID": "tt0805666",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTIzNjg0MzgwNF5BMl5BanBnXkFtZTcwMTQ1MzczMQ@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Mega Shark vs. Giant Octopus",
+      "Year": "2009",
+      "imdbID": "tt1350498",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNjc5OGY4YWMtNDZhZi00YjE1LTg0MzQtMmM4ODVmNjgwMjQ1XkEyXkFqcGdeQXVyOTYyMTM3OTU@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Shark Tank",
+      "Year": "2009–",
+      "imdbID": "tt1442550",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNjFiZDk3OWEtMzlkMS00NzQxLTg2MzQtNzE3NDkyY2FmYTRmXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "2-Headed Shark Attack",
+      "Year": "2012",
+      "imdbID": "tt2043757",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTM3NjUyOTM3Ml5BMl5BanBnXkFtZTcwMjQyNTA5Ng@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Shark Attack 3: Megalodon",
+      "Year": "2002",
+      "imdbID": "tt0313597",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTIxODk2NDc5MF5BMl5BanBnXkFtZTcwNTY3NDUxMQ@@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Mega Shark vs. Crocosaurus",
+      "Year": "2010",
+      "imdbID": "tt1705773",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOTA2MmNjMjgtMTllZC00OGI0LTlhOGItZmE0ZmJmNDMzNWE1XkEyXkFqcGdeQXVyNDE5MTU2MDE@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Jurassic Shark",
+      "Year": "2012",
+      "imdbID": "tt2071491",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BODI1ODAyODgtZDYzZS00ZTM2LTg5MzMtZjNjMDFjMzlkZGQ2XkEyXkFqcGdeQXVyMTg0MTI3Mg@@._V1_SX300.jpg"
+    }
+  ],
+  "totalResults": "373",
+  "Response": "True"
+}

@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+
+<ul>
+  {{#each results}}
+    <li>
+      <a href="/movie/{{imdbID}}">
+        <img src="{{Poster}}" alt="{{Title}}">
+        <strong>{{Title}}</strong>
+      </a>
+    </li>
+  {{/each}}
+</ul>
