@@ -1,0 +1,11 @@
+<h1>My name is {{ name }}</h1>
+<h4>I am {{ age }} years old</h4>
+<p>I live in {{ location.city }}, {{ location.country }}</p>
+<span>My pets are:</span>
+<ul>
+  {{#each pets}}
+    <li>
+      {{> pet}}
+    </li>
+  {{/each}}
+</ul>
