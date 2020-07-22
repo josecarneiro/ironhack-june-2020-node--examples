@@ -1,0 +1,10 @@
+<ul>
+  {{#each list}}
+    <li>
+      <a href="/pokemon/{{ name }}">
+        <img src="{{ sprites.animated }}" alt="">
+        <strong>{{ name }}</strong>
+      </a>
+    </li>
+  {{/each}}
+</ul>
