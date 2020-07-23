@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const path = require('path');
 
 const express = require('express');
@@ -17,9 +20,11 @@ app.get('/', (request, response) => {
   response.render('home');
 });
 
+const apiKey = process.env.OMDB_API_KEY;
+
 app.get('/search', (request, response) => {
   const term = request.query.term;
-  const url = `http://www.omdbapi.com/?apikey=6ec73a05&s=${term}`;
+  const url = `http://www.omdbapi.com/?apikey=${apiKey}&s=${term}`;
 
   axios
     .get(url)
@@ -36,7 +41,7 @@ app.get('/search', (request, response) => {
 
 app.get('/movie/:id', (request, response) => {
   const id = request.params.id;
-  const url = `http://www.omdbapi.com/?apikey=6ec73a05&i=${id}`;
+  const url = `http://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
 
   axios
     .get(url)
