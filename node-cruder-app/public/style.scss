@@ -10,14 +10,4 @@ a {
   text-decoration: none;
 }
 
-.post {
-  padding: 1em;
-  border-radius: 0.5em;
-  border: 1px solid lightgrey;
-}
-
-.post-list {
-  .post {
-    box-shadow: 0 0.125em 1em -0.25em hsla(220, 20%, 50%, 1);
-  }
-}
+@import 'post';
