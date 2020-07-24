@@ -1,0 +1,11 @@
+<h1>Single Post</h1>
+
+<div class="post">
+  <p>{{ post.content }}</p>
+</div>
+
+<a href="/post/{{ post.id }}/edit">Edit Post</a>
+
+<form method="POST" action="/post/{{ post.id }}/delete">
+  <button>Delete Post</button>
+</form>

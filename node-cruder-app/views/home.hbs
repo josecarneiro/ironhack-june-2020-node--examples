@@ -1,0 +1,11 @@
+<h1>Home</h1>
+
+<div class="post-list">
+  {{#each posts}}
+    <a href="/post/{{ id }}">
+      <div class="post">
+        <p>{{ content }}</p>
+      </div>
+    </a>
+  {{/each}}
+</div>
