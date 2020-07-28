@@ -3,6 +3,7 @@ body {
   max-width: 40em;
   margin: 0 auto;
   padding: 0 1em;
+  line-height: 2;
 }
 
 a {
@@ -11,3 +12,28 @@ a {
 }
 
 @import 'post';
+
+nav {
+  display: flex;
+  a,
+  button {
+    padding: 1em;
+  }
+}
+
+input,
+textarea,
+button {
+  padding: 1em;
+  border: 1px solid lightgrey;
+  background-color: transparent;
+  font: inherit;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin-bottom: 1em;
+  }
+}

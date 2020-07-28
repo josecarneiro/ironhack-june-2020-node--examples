@@ -8,6 +8,7 @@ const mongoStore = connectMongo(expressSession);
 
 const deserializeUser = require('./middleware/deserialize-user');
 const bindUserToResponseLocals = require('./middleware/bind-user-to-response-locals');
+
 const authenticationRouter = require('./routers/authentication');
 
 const app = express();

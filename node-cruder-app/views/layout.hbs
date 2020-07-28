@@ -10,6 +10,15 @@
     <nav>
       <a href="/">CRUDer</a>
       <a href="/post/create">Create New Post</a>
+      {{#if user}}
+        <a href="/profile">{{user.name}}'s Profile</a>
+        <form action="/authentication/sign-out" method="POST">
+          <button>Sign Out</button>
+        </form>
+      {{else}}
+        <a href="/authentication/sign-up">Sign Up</a>
+        <a href="/authentication/sign-in">Sign In</a>
+      {{/if}}
     </nav>
     {{{body}}}
   </body>

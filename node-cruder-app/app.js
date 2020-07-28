@@ -3,11 +3,21 @@ dotenv.config();
 
 const path = require('path');
 const express = require('express');
+const expressSession = require('express-session');
+const connectMongo = require('connect-mongo');
 const mongoose = require('mongoose');
+
 const nodeSassMiddleware = require('node-sass-middleware');
+
+const deserializeUser = require('./middleware/deserialize-user');
+const bindUserToResponseLocals = require('./middleware/bind-user-to-response-locals');
 
 const baseRouter = require('./routes/base');
 const postRouter = require('./routes/post');
+const authenticationRouter = require('./routes/authentication');
+const profileRouter = require('./routes/profile');
+
+const mongoStore = connectMongo(expressSession);
 
 const app = express();
 
@@ -29,11 +39,29 @@ app.use(
 );
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  expressSession({
+    secret: process.env.COOKIE_SECRET,
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 15 * 24 * 60 * 60 * 1000
+    },
+    store: new mongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 60 * 60
+    })
+  })
+);
+app.use(deserializeUser);
+app.use(bindUserToResponseLocals);
 
 // Route Handlers
 
 app.use(baseRouter);
 app.use('/post', postRouter);
+app.use('/authentication', authenticationRouter);
+app.use('/profile', profileRouter);
 
 // If no route handler is matched above,
 // this will run
@@ -49,16 +77,4 @@ app.use((error, request, response, next) => {
   response.render('error', { error });
 });
 
-// Connect to mongodb and only then start the app
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-  })
-  .then(() => {
-    app.listen(process.env.PORT);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+module.exports = app;

@@ -1,0 +1,21 @@
+<form method="POST">
+  <label for="input-name">First and Last Name</label>
+  <input
+    id="input-name"
+    type="text"
+    placeholder="First and Last Name"
+    name="name"
+    value="{{ user.name }}"
+  >
+
+  <label for="input-email">Email</label>
+  <input
+    id="input-email"
+    type="email"
+    placeholder="Email"
+    name="email"
+    value="{{ user.email }}"
+  >
+  
+  <button>Edit Profile</button>
+</form>

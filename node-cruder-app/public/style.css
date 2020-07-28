@@ -2,7 +2,8 @@ body {
   font-family: sans-serif;
   max-width: 40em;
   margin: 0 auto;
-  padding: 0 1em; }
+  padding: 0 1em;
+  line-height: 2; }
 
 a {
   color: inherit;
@@ -15,3 +16,23 @@ a {
 
 .post-list .post {
   box-shadow: 0 0.125em 1em -0.25em #667799; }
+
+nav {
+  display: flex; }
+  nav a,
+  nav button {
+    padding: 1em; }
+
+input,
+textarea,
+button {
+  padding: 1em;
+  border: 1px solid lightgrey;
+  background-color: transparent;
+  font: inherit; }
+
+form {
+  display: flex;
+  flex-direction: column; }
+  form > * {
+    margin-bottom: 1em; }

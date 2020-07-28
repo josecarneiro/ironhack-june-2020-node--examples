@@ -1,20 +1,22 @@
 const express = require('express');
 const Post = require('./../models/post');
 
+const routeAuthenticationGuard = require('./../middleware/route-authentication-guard');
+
 const postRouter = new express.Router();
 
-postRouter.get('/create', (request, response) => {
+postRouter.get('/create', routeAuthenticationGuard, (request, response) => {
   response.render('post/create');
 });
 
-postRouter.post('/create', (request, response, next) => {
-  const data = request.body;
+postRouter.post('/create', routeAuthenticationGuard, (request, response, next) => {
+  const { content } = request.body;
 
   Post.create({
-    content: data.content
+    content,
+    creator: request.session.userId
   })
     .then(post => {
-      console.log('Post creation was successful.', post);
       response.redirect('/');
     })
     .catch(error => {
@@ -27,17 +29,22 @@ postRouter.get('/:id', (request, response, next) => {
 
   Post.findById(id)
     .then(post => {
-      response.render('post/single', { post: post });
+      if (post) {
+        response.render('post/single', { post: post });
+      } else {
+        next();
+      }
     })
     .catch(error => {
       next(error);
     });
 });
 
-postRouter.post('/:id/delete', (request, response, next) => {
+postRouter.post('/:id/delete', routeAuthenticationGuard, (request, response, next) => {
   const id = request.params.id;
+  const userId = request.session.userId;
 
-  Post.findByIdAndDelete(id)
+  Post.findOneAndDelete({ _id: id, creator: userId })
     .then(() => {
       response.redirect('/');
     })
@@ -46,23 +53,29 @@ postRouter.post('/:id/delete', (request, response, next) => {
     });
 });
 
-postRouter.get('/:id/edit', (request, response, next) => {
+postRouter.get('/:id/edit', routeAuthenticationGuard, (request, response, next) => {
   const id = request.params.id;
+  const userId = request.session.userId;
 
-  Post.findById(id)
+  Post.findOne({ _id: id, creator: userId })
     .then(post => {
-      response.render('post/edit', { post });
+      if (post) {
+        response.render('post/edit', { post });
+      } else {
+        next();
+      }
     })
     .catch(error => {
       next(error);
     });
 });
 
-postRouter.post('/:id/edit', (request, response, next) => {
+postRouter.post('/:id/edit', routeAuthenticationGuard, (request, response, next) => {
   const id = request.params.id;
-  const data = request.body;
+  const { content } = request.body;
+  const userId = request.session.userId;
 
-  Post.findByIdAndUpdate(id, { content: data.content })
+  Post.findOneAndUpdate({ _id: id, creator: userId }, { content })
     .then(() => {
       response.redirect('/');
     })

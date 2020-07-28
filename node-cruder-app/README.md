@@ -33,4 +33,7 @@ POST -  '/post/:id/delete'  -  Delete single post
 GET  -  '/post/:id/edit'    -  Display post edit view.
 POST -  '/post/:id/edit'    -  Handle post editing form submission. Redirect the user to home view.
 GET  -  '/error'            -  Display error message.
+GET  -  '/profile'          -  Display profile view
+GET  -  '/profile/edit'     -  Display edit form for profile
+POST -  '/profile/edit'     -  Handle edit profile form submissions
 ```
