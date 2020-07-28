@@ -6,6 +6,7 @@ const express = require('express');
 const expressSession = require('express-session');
 const connectMongo = require('connect-mongo');
 const mongoose = require('mongoose');
+const hbs = require('hbs');
 
 const nodeSassMiddleware = require('node-sass-middleware');
 
@@ -25,6 +26,8 @@ const app = express();
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
+
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 // Mount necessary middleware
 

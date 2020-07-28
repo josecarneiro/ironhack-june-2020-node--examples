@@ -28,6 +28,7 @@ postRouter.get('/:id', (request, response, next) => {
   const id = request.params.id;
 
   Post.findById(id)
+    .populate('creator')
     .then(post => {
       if (post) {
         response.render('post/single', { post: post });

@@ -11,7 +11,7 @@
       <a href="/">CRUDer</a>
       <a href="/post/create">Create New Post</a>
       {{#if user}}
-        <a href="/profile">{{user.name}}'s Profile</a>
+        <a href="/profile/{{ user._id }}">{{user.name}}'s Profile</a>
         <form action="/authentication/sign-out" method="POST">
           <button>Sign Out</button>
         </form>
