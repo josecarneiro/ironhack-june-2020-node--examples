@@ -1,0 +1,42 @@
+<h1>Restaurant search results</h1>
+
+<div id="map-container"></div>
+
+{{#each restaurants}}
+  <a href="/restaurant/{{ _id }}">
+    <h3>{{ name }}</h3>
+  </a>
+{{/each}}
+
+<script>
+  function init () {
+    const mapContainerElement = document.getElementById('map-container');
+
+    const map = new window.google.maps.Map(mapContainerElement, {
+      center: {
+        lat: 38.75,
+        lng: -9.15
+      },
+      zoom: 11
+    });
+
+    const restaurants = {{{ json restaurants }}};
+
+    for (let restaurant of restaurants) {
+      const marker = new window.google.maps.Marker({
+        map,
+        position: {
+          lat: restaurant.location.coordinates[1],
+          lng: restaurant.location.coordinates[0]
+        }
+      });
+
+      marker.addListener('click', () => {
+        const endpoint = `/restaurant/${ restaurant._id }`;
+        window.location = endpoint;
+      });
+    }
+  }
+</script>
+
+{{> mapscript}}

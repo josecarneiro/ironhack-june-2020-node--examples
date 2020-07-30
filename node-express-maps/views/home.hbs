@@ -1,0 +1,77 @@
+<h1>List of restaurants</h1>
+
+<button id="trigger-location">Locate me!</button>
+
+<form action="/restaurant/search" method="GET">
+  <label for="latitude-input">Latitude</label>
+  <input id="latitude-input" type="text" placeholder="Latitude" name="latitude">
+  
+  <label for="longitude-input">Longitude</label>
+  <input id="longitude-input" type="text" placeholder="Longitude" name="longitude">
+
+  <label for="radius-input">Radius</label>
+  <input id="radius-input" type="text" placeholder="Radius" name="radius" value="10000">
+
+  <button>Search</button>
+</form>
+
+<div id="map-container"></div>
+
+{{#each restaurants}}
+  <a href="/restaurant/{{ _id }}">
+    <h3>{{ name }}</h3>
+  </a>
+{{/each}}
+
+<script>
+  function init () {
+    const mapContainerElement = document.getElementById('map-container');
+
+    const map = new window.google.maps.Map(mapContainerElement, {
+      center: {
+        lat: 38.75,
+        lng: -9.15
+      },
+      zoom: 11
+    });
+
+    const restaurants = {{{ json restaurants }}};
+
+    for (let restaurant of restaurants) {
+      const marker = new window.google.maps.Marker({
+        map,
+        position: {
+          lat: restaurant.location.coordinates[1],
+          lng: restaurant.location.coordinates[0]
+        }
+      });
+
+      marker.addListener('click', () => {
+        const endpoint = `/restaurant/${ restaurant._id }`;
+        window.location = endpoint;
+      });
+    }
+  }
+</script>
+
+<script>
+  const triggerLocationButton = document.getElementById('trigger-location');
+
+  const latitudeInputElement = document.getElementById('latitude-input');
+  const longitudeInputElement = document.getElementById('longitude-input');
+
+  triggerLocationButton.addEventListener('click', () => {
+    window.navigator.geolocation.getCurrentPosition(position => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      latitudeInputElement.value = latitude;
+      longitudeInputElement.value = longitude;
+    }, error => {
+      console.log(error);
+
+    })
+  });
+</script>
+
+{{> mapscript}}

@@ -1,0 +1,34 @@
+<h1>Restaurant single</h1>
+
+<h3>{{ restaurant.name }}</h3>
+<h6>Latitude: {{ restaurant.location.coordinates.[1] }}</h6>
+<h6>Longitude: {{ restaurant.location.coordinates.[0] }}</h6>
+
+<div id="map-container"></div>
+
+<script>
+  function init () {
+    const mapContainerElement = document.getElementById('map-container');
+
+    const map = new window.google.maps.Map(mapContainerElement, {
+      center: {
+        lat: 38.75,
+        lng: -9.15
+      },
+      zoom: 11
+    });
+
+    const longitude = {{ restaurant.location.coordinates.[0] }};
+    const latitude = {{ restaurant.location.coordinates.[1] }};
+
+    const marker = new window.google.maps.Marker({
+      map,
+      position: {
+        lat: latitude,
+        lng: longitude
+      }
+    });
+  }
+</script>
+
+{{> mapscript}}
