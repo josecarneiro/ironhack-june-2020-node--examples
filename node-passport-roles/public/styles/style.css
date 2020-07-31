@@ -49,6 +49,7 @@ form {
 input,
 textarea,
 button,
+select,
 .btn {
   padding: 1em;
   border: 1px solid rgba(191, 191, 191, 0.5);

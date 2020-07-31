@@ -14,48 +14,64 @@ const User = require('./models/user');
 
 passport.use(
   'sign-up',
-  new passportLocal.Strategy({}, (username, password, callback) => {
-    bcryptjs
-      .hash(password, 10)
-      .then(hash => {
-        return User.create({
-          username,
-          passwordHash: hash
+  new passportLocal.Strategy(
+    {
+      usernameField: 'email',
+      passReqToCallback: true
+    },
+    (req, email, password, callback) => {
+      const name = req.body.name;
+      const role = req.body.role;
+
+      bcryptjs
+        .hash(password, 10)
+        .then(hash => {
+          return User.create({
+            name,
+            email,
+            role,
+            passwordHash: hash
+          });
+        })
+        .then(user => {
+          callback(null, user);
+        })
+        .catch(error => {
+          callback(error);
         });
-      })
-      .then(user => {
-        callback(null, user);
-      })
-      .catch(error => {
-        callback(error);
-      });
-  })
+    }
+  )
 );
 
 passport.use(
   'sign-in',
-  new passportLocal.Strategy({}, (username, password, callback) => {
-    let user;
-    User.findOne({ username })
-      .then(document => {
-        if (!document) {
-          return Promise.reject(new Error("There's no user with that email."));
-        } else {
-          user = document;
-          return bcryptjs.compare(password, user.passwordHash);
-        }
-      })
-      .then(result => {
-        if (result) {
-          callback(null, user);
-        } else {
-          return Promise.reject(new Error('Wrong password.'));
-        }
-      })
-      .catch(error => {
-        callback(error);
-      });
-  })
+  new passportLocal.Strategy(
+    {
+      usernameField: 'email'
+    },
+    (email, password, callback) => {
+      let user;
+      User.findOne({ email })
+        .then(document => {
+          if (!document) {
+            return Promise.reject(new Error("There's no user with that email."));
+          } else {
+            user = document;
+            return bcryptjs.compare(password, user.passwordHash);
+          }
+        })
+        .then(result => {
+          if (result) {
+            callback(null, user);
+          } else {
+            return Promise.reject(new Error('Wrong password.'));
+          }
+        })
+        .catch(error => {
+          callback(error);
+        });
+    }
+  )
 );
 
 //   3.2 - Create a serialization and deserialization mechanism for passport.

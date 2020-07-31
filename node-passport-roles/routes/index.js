@@ -12,4 +12,14 @@ router.get('/private', routeGuard, (req, res, next) => {
   res.render('private');
 });
 
+const roleRouteGuard = require('./../middleware/role-route-guard');
+
+router.get('/purchases', routeGuard, roleRouteGuard(['customer', 'admin']), (req, res, next) => {
+  res.render('purchases');
+});
+
+router.get('/sold', routeGuard, roleRouteGuard(['seller', 'admin']), (req, res, next) => {
+  res.render('sold');
+});
+
 module.exports = router;
